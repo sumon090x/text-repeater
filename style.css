@@ -1,10 +1,9 @@
 :root {
   --bg: #0f172a;
-  --card: rgba(17,24,39,0.5); /* lighter transparent card */
+  --card: rgba(17,24,39,0.5);
   --muted: #94a3b8;
   --text: #e5e7eb;
   --brand: #22c55e;
-  --brand-2: #06b6d4;
   --ring: #334155;
 }
 
@@ -15,44 +14,69 @@ body {
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
   background: linear-gradient(135deg, var(--bg), #020617);
   color: var(--text);
+  line-height: 1.5;
 }
 
-.container { max-width: 960px; margin: 40px auto; padding: 16px; }
+.container { 
+  max-width: 960px; 
+  margin: 40px auto; 
+  padding: 16px; 
+}
 
 .card { 
   background: var(--card); 
-  backdrop-filter: blur(10px); /* increased blur for glass effect */
-  border:1px solid rgba(255,255,255,0.1); 
-  border-radius:16px; 
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1); 
+  border-radius: 16px; 
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
   transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 10px; /* ✅ প্রতিটি card এর নিচে gap */
+  padding: 24px;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow:0 15px 40px rgba(0,0,0,.35);
+  box-shadow: 0 15px 40px rgba(0,0,0,.35);
 }
 
-.row { display: flex; gap:12px; align-items: center; flex-wrap: wrap; }
+.row { 
+  display: flex; 
+  gap: 16px; /* ✅ row এর item গুলোর মাঝে consistent gap */
+  align-items: center; 
+  flex-wrap: wrap; 
+}
 
-.p-24 { padding:24px; }
+h1 { 
+  font-size: 28px; 
+  margin: 0 0 12px; 
+  text-align: center; 
+}
+h2 { 
+  font-size: 18px; 
+  margin: 0 0 16px; 
+  color: var(--muted); 
+  text-align: center; 
+}
 
-h1 { font-size:28px; margin:0 0 8px; text-align: center; }
-h2 { font-size:18px; margin:0 0 8px; color: var(--muted); text-align: center; }
-
-a { text-decoration: none; transition: transform 0.2s, opacity 0.2s; }
-a:hover { transform: scale(1.05); opacity: 0.9; }
+a { 
+  text-decoration: none; 
+  transition: transform 0.2s, opacity 0.2s; 
+}
+a:hover { 
+  transform: scale(1.05); 
+  opacity: 0.9; 
+}
 
 .link-box {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 16px;
+  padding: 12px 18px;
   border-radius: 12px;
   font-weight: 600;
   color: white;
-  flex:1;
+  flex: 1;
   max-width: 220px;
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -68,79 +92,84 @@ a:hover { transform: scale(1.05); opacity: 0.9; }
 
 button { 
   cursor: pointer; 
-  border:1px solid rgba(255,255,255,0.1); 
-  background: linear-gradient(180deg,rgba(31,41,55,0.6),rgba(11,18,32,0.6)); 
+  border: 1px solid rgba(255,255,255,0.1); 
+  background: linear-gradient(180deg, rgba(84, 105, 134, 0.6), rgba(11,18,32,0.6)); 
   color: var(--text); 
-  padding: 10px 14px; 
-  border-radius:12px; 
-  font-weight:600; 
+  padding: 10px 16px; 
+  border-radius: 12px; 
+  font-weight: 600; 
   transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+  margin-right: 8px; /* ✅ button এর মাঝে ছোট gap */
+}
+
+button:last-child {
+  margin-right: 0; /* ✅ শেষ বাটনের ডানে gap থাকবে না */
 }
 
 button.primary { 
-  background: linear-gradient(180deg,rgba(5,150,105,0.7),rgba(4,120,87,0.7)); 
+  background: linear-gradient(180deg, rgba(5,150,105,0.7), rgba(4,120,87,0.7)); 
   border-color: rgba(6,95,70,0.7); 
 }
 
-button:hover {
+button:hover { 
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 
-button.primary:hover { 
-  background: linear-gradient(180deg,rgba(4,120,87,0.8),rgba(6,95,70,0.8)); 
+button.primary:hover {
+  background: linear-gradient(180deg, rgba(4,120,87,0.8), rgba(6,95,70,0.8));
 }
 
 button:active { transform: translateY(1px); }
 
-.field { display:flex; flex-direction:column; gap:6px; flex:1; }
+.field { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+  flex: 1; 
+  margin-bottom: 5px; /* ✅ প্রতিটি ইনপুট field এর নিচে margin */
+}
 
-label { font-size:13px; color: var(--muted); }
+label { 
+  font-size: 13px; 
+  color: var(--muted); 
+}
 
-input[type="text"], input[type="number"], textarea, select { 
-  width:100%; 
-  background: rgba(11,18,32,0.6); /* lighter transparent input */
-  color:var(--text); 
-  border:1px solid rgba(255,255,255,0.1); 
-  border-radius:12px; 
-  padding:10px 12px; 
-  outline:none; 
+input[type="text"], 
+input[type="number"], 
+textarea, 
+select { 
+  width: 100%; 
+  background: rgba(11,18,32,0.6);
+  color: var(--text); 
+  border: 1px solid rgba(255,255,255,0.1); 
+  border-radius: 12px; 
+  padding: 10px 12px; 
+  outline: none; 
   transition: box-shadow 0.2s, border-color 0.2s;
 }
 
 input:focus, textarea:focus, select:focus { 
-  box-shadow:0 0 0 3px var(--ring); 
+  box-shadow: 0 0 0 3px var(--ring); 
   border-color: var(--brand);
 }
 
-textarea { min-height:140px; resize: vertical; }
-
-.small { font-size:12px; color:var(--muted); }
-
-.footer { opacity:.8; text-align:center; font-size:12px; padding:18px; }
-
-.spacer { height:10px; }
-
-/* Link + Copy Button Container */
-.link-row {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  align-items: center;
+textarea { 
+  min-height: 140px; 
+  resize: vertical; 
 }
 
-.link-row > a {
-  flex: 1 1 auto; /* link takes remaining space */
+.small { 
+  font-size: 12px; 
+  color: var(--muted); 
+  margin-top: 10px; /* ✅ টিপ এর উপরে একটু ফাঁকা */
 }
 
-.link-row > button {
-  flex: 0 0 auto; /* button stays compact on right */
+.footer { 
+  opacity: .8; 
+  text-align: center; 
+  font-size: 12px; 
+  padding: 18px; 
+  margin-top: 20px; /* ✅ footer এর উপরে ফাঁকা */
 }
 
-/* Optional: small screen adjustments */
-@media (max-width: 720px) {
-  .link-row {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
