@@ -1,26 +1,48 @@
 :root {
   --bg: #0f172a;
-  --card: #111827;
+  --card: rgba(17,24,39,0.5); /* lighter transparent card */
   --muted: #94a3b8;
   --text: #e5e7eb;
   --brand: #22c55e;
   --brand-2: #06b6d4;
   --ring: #334155;
 }
+
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
   background: linear-gradient(135deg, var(--bg), #020617);
   color: var(--text);
 }
+
 .container { max-width: 960px; margin: 40px auto; padding: 16px; }
-.card { background: rgba(17,24,39,.85); backdrop-filter: blur(6px); border:1px solid #1f2937; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+
+.card { 
+  background: var(--card); 
+  backdrop-filter: blur(10px); /* increased blur for glass effect */
+  border:1px solid rgba(255,255,255,0.1); 
+  border-radius:16px; 
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
 .row { display: flex; gap:12px; align-items: center; flex-wrap: wrap; }
+
 .p-24 { padding:24px; }
+
 h1 { font-size:28px; margin:0 0 8px; text-align: center; }
 h2 { font-size:18px; margin:0 0 8px; color: var(--muted); text-align: center; }
-a { text-decoration: none; }
+
+a { text-decoration: none; transition: transform 0.2s, opacity 0.2s; }
+a:hover { transform: scale(1.05); opacity: 0.9; }
+
 .link-box {
   display: flex;
   align-items: center;
@@ -33,17 +55,92 @@ a { text-decoration: none; }
   flex:1;
   max-width: 220px;
   text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
+
+.link-box:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
 .facebook { background: #1877f2; }
 .whatsapp { background: #25d366; }
-button { cursor: pointer; border:1px solid #1f2937; background: linear-gradient(180deg,#1f2937,#0b1220); color: var(--text); padding: 10px 14px; border-radius:12px; font-weight:600; }
-button.primary { background: linear-gradient(180deg,#059669,#047857); border-color:#065f46; }
+
+button { 
+  cursor: pointer; 
+  border:1px solid rgba(255,255,255,0.1); 
+  background: linear-gradient(180deg,rgba(31,41,55,0.6),rgba(11,18,32,0.6)); 
+  color: var(--text); 
+  padding: 10px 14px; 
+  border-radius:12px; 
+  font-weight:600; 
+  transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+}
+
+button.primary { 
+  background: linear-gradient(180deg,rgba(5,150,105,0.7),rgba(4,120,87,0.7)); 
+  border-color: rgba(6,95,70,0.7); 
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+button.primary:hover { 
+  background: linear-gradient(180deg,rgba(4,120,87,0.8),rgba(6,95,70,0.8)); 
+}
+
 button:active { transform: translateY(1px); }
+
 .field { display:flex; flex-direction:column; gap:6px; flex:1; }
+
 label { font-size:13px; color: var(--muted); }
-input[type="text"], input[type="number"], textarea, select { width:100%; background:#0b1220; color:var(--text); border:1px solid #1f2937; border-radius:12px; padding:10px 12px; outline:none; }
-input:focus, textarea:focus, select:focus { box-shadow:0 0 0 3px var(--ring); }
+
+input[type="text"], input[type="number"], textarea, select { 
+  width:100%; 
+  background: rgba(11,18,32,0.6); /* lighter transparent input */
+  color:var(--text); 
+  border:1px solid rgba(255,255,255,0.1); 
+  border-radius:12px; 
+  padding:10px 12px; 
+  outline:none; 
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+input:focus, textarea:focus, select:focus { 
+  box-shadow:0 0 0 3px var(--ring); 
+  border-color: var(--brand);
+}
+
 textarea { min-height:140px; resize: vertical; }
+
 .small { font-size:12px; color:var(--muted); }
+
 .footer { opacity:.8; text-align:center; font-size:12px; padding:18px; }
+
 .spacer { height:10px; }
+
+/* Link + Copy Button Container */
+.link-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.link-row > a {
+  flex: 1 1 auto; /* link takes remaining space */
+}
+
+.link-row > button {
+  flex: 0 0 auto; /* button stays compact on right */
+}
+
+/* Optional: small screen adjustments */
+@media (max-width: 720px) {
+  .link-row {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

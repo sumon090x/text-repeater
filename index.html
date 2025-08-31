@@ -1,86 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Text Repeater — Sumon Ahamed</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <div class="card p-24">
-      <h1>Sumon Ahamed</h1>
-      <h2>Text Repeater Tool</h2>
-    </div>
-
-    <div class="spacer"></div>
-
-    <div class="card p-24">
-      <div class="row">
-        <a href="https://www.facebook.com/profile.php?id=sumon090x" target="_blank" class="link-box facebook">
-          <i class="fab fa-facebook-f"></i> My Facebook
-        </a>
-        <button onclick="copyText('https://www.facebook.com/profile.php?id=sumon090x')">Copy</button>
-
-        <a href="https://wa.me/8801875455820" target="_blank" class="link-box whatsapp">
-          <i class="fab fa-whatsapp"></i> WhatsApp
-        </a>
-        <button onclick="copyText('https://wa.me/8801875455820')">Copy</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Text Repeater — Sumon Ahamed</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card p-24">
+        <h1>Sumon Ahamed</h1>
+        <h2>Text Repeater Tool</h2>
       </div>
-    </div>
 
-    <div class="spacer"></div>
+      <div class="spacer"></div>
 
-    <div class="card p-24">
-      <h2 style="margin-bottom:12px">Text Repeater</h2>
-      <div class="row">
-        <div class="field">
-          <label>Enter Text</label>
-          <textarea id="inputText" placeholder="Type your text..."></textarea>
+      <div class="card p-24">
+        <div class="row">
+          <a
+            href="https://www.facebook.com/profile.php?id=sumon090x"
+            target="_blank"
+            class="link-box facebook"
+          >
+            <i class="fab fa-facebook-f"></i> Facebook
+          </a>
+
+          <button
+            onclick="copyText('https://www.facebook.com/profile.php?id=sumon090x')"
+          >
+            Copy
+          </button>
+
+          <a
+            href="https://wa.me/8801875455820"
+            target="_blank"
+            class="link-box whatsapp"
+          >
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+          <button onclick="copyText('https://wa.me/8801875455820')">
+            Copy
+          </button>
         </div>
       </div>
-      <div class="row">
-        <div class="field" style="max-width:180px">
-          <label>Repeat Count</label>
-          <input id="repeatCount" type="number" min="1" max="10000" value="5" />
-        </div>
-        <div class="field" style="max-width:220px">
-          <label>Separator</label>
-          <select id="separatorSelect">
-            <option value="newline">New Line</option>
-            <option value="space">Space</option>
-            <option value=", ">Comma</option>
-            <option value="custom">Custom</option>
-          </select>
-        </div>
-        <div class="field" id="customSepWrap" style="display:none;max-width:260px">
-          <label>Custom Separator</label>
-          <input id="customSeparator" type="text" placeholder="eg: | or —" />
-        </div>
-        <div class="field" style="max-width:260px">
-          <label>Options</label>
-          <div class="row">
-            <label class="badge"><input id="addNumber" type="checkbox" /> <span>Numbering</span></label>
-            <label class="badge"><input id="trimInput" type="checkbox" checked /> <span>Trim</span></label>
+
+      <div class="spacer"></div>
+
+      <div class="card p-24">
+        <h2 style="margin-bottom: 12px">Text Repeater</h2>
+        <div class="row">
+          <div class="field">
+            <label>Enter Text</label>
+            <textarea id="inputText" placeholder="Type your text..."></textarea>
           </div>
         </div>
+        <div class="row">
+          <div class="field" style="max-width: 180px">
+            <label>Repeat Count</label>
+            <input
+              id="repeatCount"
+              type="number"
+              min="1"
+              max="10000"
+              value="5"
+            />
+          </div>
+          <div class="field" style="max-width: 220px">
+            <label>Separator</label>
+            <select id="separatorSelect">
+              <option value="newline">New Line</option>
+              <option value="space">Space</option>
+              <option value=", ">Comma</option>
+              <option value="custom">Custom</option>
+            </select>
+          </div>
+          <div
+            class="field"
+            id="customSepWrap"
+            style="display: none; max-width: 260px"
+          >
+            <label>Custom Separator</label>
+            <input id="customSeparator" type="text" placeholder="eg: | or —" />
+          </div>
+          <div class="field" style="max-width: 260px">
+            <label>Options</label>
+            <div class="row">
+              <label class="badge"
+                ><input id="addNumber" type="checkbox" />
+                <span>Numbering</span></label
+              >
+              <label class="badge"
+                ><input id="trimInput" type="checkbox" checked />
+                <span>Trim</span></label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 12px">
+          <button id="generate" class="primary">Generate</button>
+          <button id="copyOutput">Copy Output</button>
+          <button id="clearAll">Clear</button>
+        </div>
+        <div class="field" style="margin-top: 12px">
+          <label>Output</label>
+          <textarea
+            id="outputText"
+            placeholder="Output will appear here"
+            readonly
+          ></textarea>
+        </div>
+        <div class="small">
+          Tip: Large numbers (10,000+) may slow down browser.
+        </div>
       </div>
-      <div class="row" style="margin-top:12px">
-        <button id="generate" class="primary">Generate</button>
-        <button id="copyOutput">Copy Output</button>
-        <button id="clearAll">Clear</button>
+
+      <div class="footer">
+        © <span id="year"></span> Sumon Ahamed • Built with ♥
       </div>
-      <div class="field" style="margin-top:12px">
-        <label>Output</label>
-        <textarea id="outputText" placeholder="Output will appear here" readonly></textarea>
-      </div>
-      <div class="small">Tip: Large numbers (10,000+) may slow down browser.</div>
     </div>
 
-    <div class="footer">© <span id="year"></span> Sumon Ahamed • Built with ♥</div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
