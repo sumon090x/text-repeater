@@ -30,7 +30,7 @@ body {
   border-radius: 16px; 
   box-shadow: 0 10px 30px rgba(0,0,0,.25);
   transition: transform 0.2s, box-shadow 0.2s;
-  margin-bottom: 10px; /* ✅ প্রতিটি card এর নিচে gap */
+  margin-bottom: 10px;
   padding: 24px;
 }
 
@@ -41,9 +41,13 @@ body {
 
 .row { 
   display: flex; 
-  gap: 16px; /* ✅ row এর item গুলোর মাঝে consistent gap */
+  gap: 16px; 
   align-items: center; 
   flex-wrap: wrap; 
+}
+
+.center-row {
+  justify-content: center;
 }
 
 h1 { 
@@ -99,11 +103,11 @@ button {
   border-radius: 12px; 
   font-weight: 600; 
   transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
-  margin-right: 8px; /* ✅ button এর মাঝে ছোট gap */
+  margin-right: 8px;
 }
 
 button:last-child {
-  margin-right: 0; /* ✅ শেষ বাটনের ডানে gap থাকবে না */
+  margin-right: 0;
 }
 
 button.primary { 
@@ -127,7 +131,7 @@ button:active { transform: translateY(1px); }
   flex-direction: column; 
   gap: 6px; 
   flex: 1; 
-  margin-bottom: 5px; /* ✅ প্রতিটি ইনপুট field এর নিচে margin */
+  margin-bottom: 5px;
 }
 
 label { 
@@ -162,7 +166,7 @@ textarea {
 .small { 
   font-size: 12px; 
   color: var(--muted); 
-  margin-top: 10px; /* ✅ টিপ এর উপরে একটু ফাঁকা */
+  margin-top: 10px;
 }
 
 .footer { 
@@ -170,6 +174,30 @@ textarea {
   text-align: center; 
   font-size: 12px; 
   padding: 18px; 
-  margin-top: 20px; /* ✅ footer এর উপরে ফাঁকা */
+  margin-top: 20px;
 }
 
+/* ========================
+   Toast Notification
+   ======================== */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.toast.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
